@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
-csv_path = Path("data/raw/weather_history.csv")
+csv_path = Path("data/processed/weather_clean.csv")
 df = pd.read_csv(csv_path)
 df['date'] = pd.to_datetime(df['date'])
 
@@ -21,7 +21,7 @@ X = df[['day_of_week', 'month', 'temp_lag_1']]
 y = df['temperature_max']
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, shuffle=False
+    X, y, test_size=0.2, shuffle=False, random_state=42
 )
 
 model = LinearRegression()

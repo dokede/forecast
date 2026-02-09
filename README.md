@@ -15,15 +15,7 @@ Build a production-ready system that:
 - `data/` - raw and cleaned datasets
 - `pipelines/` - scripts to fetch and clean data
 - `analytics/` - exploratory analysis and plots
-- `features/` - feature engineering for ML
 - `models/` - training and saving ML models
-- `api/` - serving predictions via API
-- `dashboards/` - visualization dashboards
-- `docker/` - Docker configuration
 
 ## Tech stack
 - Python
-- Pandas, Requests
-- PostgreSQL
-- FastAPI
-- Docker

@@ -1,28 +1,39 @@
 import pandas as pd
-from pathlib import Path
 import matplotlib.pyplot as plt
+from scipy.stats import shapiro
 
-csv_path = Path("data/raw/weather_history.csv")
-df = pd.read_csv(csv_path)
+# wczytanie danych
+df = pd.read_csv("data/raw/weather_history.csv")
+
 df['date'] = pd.to_datetime(df['date'])
 
+# tworzymy kolumnę z miesiącem
+df['month'] = df['date'].dt.month
 
-plt.figure(figsize=(12,5))
-plt.plot(df['date'], df['temperature_max'], marker='.', linestyle='-')
-plt.title("Maksymalna temperatura dzienna - Warszawa")
-plt.xlabel("Data")
-plt.ylabel("Temperatura (°C)")
-plt.grid(True)
+# grupowanie po miesiącu i średnia temperatura
+monthly_avg = df.groupby('month')['temperature_max'].mean()
+
+print(df.head())
+print(df.describe())
+
+# wykres słupkowy
+monthly_avg.plot(kind='bar', title="Średnia temperatura wg miesiąca", figsize=(10,6))
+plt.xlabel("Miesiąc")
+plt.ylabel("Średnia maksymalna temperatura (°C)")
 plt.show()
 
-df['month'] = df['date'].dt.month
-df['day_of_week'] = df['date'].dt.dayofweek
-
-# Boxplot wg miesięcy
-plt.figure(figsize=(10,5))
-df.boxplot(column='temperature_max', by='month')
-plt.title("Rozkład temperatur wg miesiąca")
-plt.suptitle("")
-plt.xlabel("Miesiąc")
+# wykres temperatury w czasie
+plt.figure(figsize=(12,6))
+plt.plot(df['date'], df['temperature_max'], color='orange', label='Maksymalna temperatura')
+plt.title("Maksymalna temperatura w czasie")
+plt.xlabel("Data")
 plt.ylabel("Temperatura (°C)")
+plt.legend()
+plt.show()
+
+plt.figure(figsize=(10,6))
+plt.hist(df['temperature_max'], bins=30, color='skyblue', edgecolor='black')
+plt.title("Histogram maksymalnej temperatury")
+plt.xlabel("Temperatura (°C)")
+plt.ylabel("Liczba dni")
 plt.show()
