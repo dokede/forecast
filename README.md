@@ -1,21 +1,27 @@
-# Weather Forecasting Project
+# Forecasting Weather
 
-End-to-end data & machine learning project for forecasting daily maximum temperature in a selected city.
+Projekt pokazuje, jak prognozować maksymalne temperatury dla danej lokalizacji w Polsce przy użyciu prostego modelu regresji liniowej.
 
-## Project goal
-Build a production-ready system that:
-- fetches weather data from API
-- processes and cleans it
-- analyzes trends
-- trains forecasting models
-- serves predictions via API
-- visualizes results on a dashboard
 
-## Folder structure
-- `data/` - raw and cleaned datasets
-- `pipelines/` - scripts to fetch and clean data
-- `analytics/` - exploratory analysis and plots
-- `models/` - training and saving ML models
 
-## Tech stack
-- Python
+## 📂 Struktura projektu
+
+forecasting/
+├─ pipeline/
+│ ├─ 01_fetch.py # Pobranie danych historycznych z API
+│ ├─ 02_data_prep.py # Przetwarzanie i czyszczenie danych
+│ └─ 03_train_model.py # Trenowanie baseline Linear Regression
+├─ data/
+│ ├─ raw/ # Surowe dane pobrane z API
+│ └─ processed/ # Dane gotowe do modelowania
+├─ analytics/ # Eksploracja danych i wykresy
+├─ models/ # Zapisany model regresji
+├─ app/ # (Opcjonalnie) dashboard w Streamlit
+└─ README.md
+
+1. **Kolejność**
+
+   python pipeline/fetch_weather.py            - pobranie danych pogodowych
+   python pipeline/data_prep.py                - przygotowanie danych
+   python analytics/explore_weatherdata_prep.py - analiza danych
+   python pipeline/train_model.py              - budowa modelu
