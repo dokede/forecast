@@ -1,27 +1,26 @@
 # Forecasting Weather
 
-Projekt pokazuje, jak prognozować maksymalne temperatury dla danej lokalizacji w Polsce przy użyciu prostego modelu regresji liniowej.
+Projekt pokazuje, jak prognozować maksymalne temperatury dla wybranej lokalizacji w Polsce przy użyciu prostego modelu regresji liniowej.
 
-
+---
 
 ## 📂 Struktura projektu
 
-forecasting/
-├─ pipeline/
-│ ├─ 01_fetch.py # Pobranie danych historycznych z API
-│ ├─ 02_data_prep.py # Przetwarzanie i czyszczenie danych
-│ └─ 03_train_model.py # Trenowanie baseline Linear Regression
-├─ data/
-│ ├─ raw/ # Surowe dane pobrane z API
-│ └─ processed/ # Dane gotowe do modelowania
-├─ analytics/ # Eksploracja danych i wykresy
-├─ models/ # Zapisany model regresji
-├─ app/ # (Opcjonalnie) dashboard w Streamlit
-└─ README.md
+### Pipeline
+- `fetch_weather.py` – pobranie danych historycznych z API  
+- `data_prep.py` – przetwarzanie i czyszczenie danych  
+- `train_model.py` – trenowanie baseline Linear Regression  
 
-1. **Kolejność**
+### Data
+- `raw/` – surowe dane pobrane z API  
+- `processed/` – dane gotowe do modelowania  
 
-   python pipeline/fetch_weather.py            - pobranie danych pogodowych
-   python pipeline/data_prep.py                - przygotowanie danych
-   python analytics/explore_weatherdata_prep.py - analiza danych
-   python pipeline/train_model.py              - budowa modelu
+### Analytics
+- Pliki do eksploracji danych i wykresów  
+
+### Models
+- Zapisany model regresji  
+
+### Inne
+- `README.md` – dokumentacja projektu  
+- `requirements.txt` – lista pakietów potrzebnych do uruchomienia projektu  
